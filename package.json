@@ -1,0 +1,44 @@
+{
+  "name": "signage-template-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "webpack-dev-server --env.NODE_ENV=development",
+    "build": "webpack --env.NODE_ENV=production -p --progress --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "base64-inline-loader": "^1.1.1",
+    "node-fetch": "^2.3.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-json-view": "^1.19.1",
+    "x2js": "^3.2.6"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^5.0.0",
+    "css-loader": "^2.1.1",
+    "inline-css-webpack-loader": "^1.0.4",
+    "react-hot-loader": "^4.8.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
