@@ -1,61 +1,41 @@
 
-[![N|Solid](http://v.fastcdn.co/u/19d828a0/31820341-0-Logo-adMooH-Vertical.png)](https://home.admooh.com/)
+<div style="text-align:center"><img src="logo.png" /></div>
+
 # adMooH Signage App
 
-adMooH Signage App é uma ferramenta para a construções de templates que serão usados nos canais de conteúdo dentro da plataforma adMooH.
-Os templates são construídos em javascript utilizando [React.js](https://reactjs.org/), com essa ferramenta você pode
+adMooH Signage App é uma ferramenta para a construções de aplicativos que serão usados dentro da plataforma adMooH.
+Os templates são construídos em javascript utilizando [React.js](https://reactjs.org/), com essa ferramenta você pode:
 
-  - Visualizar items do feed RSS.
-  - Visualizar o template com base no feed.
+  - Visualizar o app.
+  - Visualizar items do RSS e JSON.
+  - Inserir dados customizados.
+  - Excecutar funções de lifecycle*.
+  - Buildar o app para publicação.
 
-## Utilização
+## **Utilização**
 
-É preferível que os templates fiquem na sub-pasta **templates**, e sigam a seguinte estrutura de pastas:
+É preferível que os aplicativos fiquem na sub-pasta **apps**, e sigam a seguinte estrutura de pastas:
 ```
-.seu-template
-_./images
-___*.png, *jpeg
-_ *.css
-_ index.js
-_ template.jsx
+.awesome-app
+├──./images
+│   └── *.png, *jpeg
+├── *.css
+├── app.jsx
+└── index.js
 ```
-O arquivo **index.js** não precisa ser alterado, o arquivo **template.jsx** pode ser alterado mas é necessário que o componente principal seja a exportação padrão.
+O arquivo **index.js** não deve ser alterado!\
+O arquivo **app.jsx** pode ser alterado mas é necessário que o componente principal do aplicativo seja a exportação padrão do arquivo.
 
 ```javascript
-import React from 'react';
 export default class UolNews extends React.Component {
 ...
 ```
 
-### Utilizando Styles
+### **Utilizando Estilos**
 
-Os styles nos componentes de template serão convertidos para in-line, e existe duas forma de você adicionar esses styles em seu componente:
+Os estilos nos componentes do aplicativo serão convertidos para style in-line, existem duas formas de adicionar aplicá-los:
 
-- Utlizando um objeto de style.
-
-```javascript
-const customStyle = {
-    color: "blue",
-    font-family: "verdana",
-    font-size: "300%"
-}
-```
-- Ou uma classe normal dentro de um arquivo .css
-
-```css
-.customCss {
-    color: blue;
-    font-family: verdana;
-    font-size: 300%;
-}
-```
-Caso você escolha utilizar um arquivo .css e necessário fazer a importação do arquivo no arquivo do componente.
-
-```javascript
-import * as layout from './template.css';
-```
-
-Para utilizar um style no componente é so usar a propiedade **style** do componente:
+- Utlizando um objeto de estilo.
 
 ```javascript
 import React from 'react';
@@ -70,55 +50,70 @@ const customStyle = {
 export default class SampleTemplate extends React.Component {
 	render() {		
         return(
-    <div>
-        <h1 style={customStyle}>Style1</h1>
-        <h1 style={layout.customCss}>Style1</h1>
-     </div>
+        <div>
+            <h1 style={customStyle}>Desce um pingado meu consagrado.</h1>
+        </div>
 		);
     }
 }
 ```
 
-### Utilizando Dados
+- Utilizando um arquivo .css
 
-O Seu aplcativo irá receber 5  propriedades
+```css
+.customCss {
+    color: blue;
+    font-family: verdana;
+    font-size: 300%;
+}
+```
+E necessário fazer a importação dele no componente.
 
-```json
-{
-    "data": [/*custom source data*/],
-    "custom": {/*any custom data*/},
-    "willMount": function() => void,
-    "willStart": function() => void,
-    "willStop": function() => void
+```javascript
+import * as layout from './template.css';
+```
+
+### **Utilizando Dados**
+
+O Seu aplicativo irá receber 2 propiedades.
+
+| Prop | Tipo | Descrição |
+|:---|:---|:---|
+|`data`|object[]|Um array com os objetos do feed (rss convertido ou JSON).|
+|`custom`|object|Objeto com as informações customizadas do aplicativo.|
+
+Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://github.com/x2js/x2js)**.
+
+### **Ciclo de vida**
+
+Você pode usar como base o ciclo de vida do react.\
+http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+Além disso o adMooH Signage irá executar a função **willShow()** (caso implementada) quando ele for exibir o aplicativo. 
+
+```javascript
+willShow(){
+    /*sua logica*/
 }
 ```
 
-### Comandos
+### **Comandos**
 
-Para iniciar a visualização de um template você precisa executar o comando **start** e passar no argumento **-t** o caminho do arquivo **index.js** do seu template.
+Para iniciar a visualização de um aplicativo execute o comando **start** e passe no argumento **-t** o caminho do arquivo **index.js** do seu app.
 
 ```sh
-$ yarn start -t ./template/seu-template/index.js
+$ yarn start -t ./template/awesome-app/index.js
 ```
 
-Para buildar o template para produção você só precisar alterar o comando start para **build**.
+Para buildar o aplicativo execute o comando **build**.
 
 ```sh
-$ yarn build -t ./template/seu-template/index.js
+$ yarn build -t ./template/awesome-app/index.js
 ```
 
 O arquivo final do template estará disponivel na pasta .build na raiz do projeto.
 
-### Visualização
+## **Exemplos**
+Mais exemplos [aqui!](https://github.com/adMooH/signage-template)
 
-Para visualizar o seu template, após executar o comando **start** entre no endereço.
-
-```sh
-127.0.0.1:8080
-```
-
-License
-----
-ISC
-
-# **May the force be with you!**
+## **May the force be with you!**

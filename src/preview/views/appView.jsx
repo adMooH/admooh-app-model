@@ -131,7 +131,7 @@ export default function AppView(props) {
         })}
       >
         <AppPreview
-          getTemplate={props.getTemplate}
+          getApp={props.getApp}
           data={data}
           custom={customData}
           setApp={setAppRef}

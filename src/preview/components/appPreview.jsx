@@ -9,6 +9,6 @@ export default class AppPreview extends React.Component {
 			custom: this.props.custom,
 			setApp: this.props.setApp
 		};
-		return this.props.getTemplate(templateProps);
+		return this.props.getApp(templateProps);
 	}
 }

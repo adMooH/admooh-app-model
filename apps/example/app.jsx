@@ -1,5 +1,5 @@
 import React from 'react';
-import * as layout from './template.css';
+import * as layout from './app.css';
 import AdmoohApp from '../../src/admoohApp';
 
 import uolLogo from './images/uolLogo.png'
