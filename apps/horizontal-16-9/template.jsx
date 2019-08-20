@@ -1,10 +1,11 @@
 import React from 'react';
 import * as layout from './template.css';
+import AdmoohApp from '../../src/admoohApp';
 
 import uolLogo from './images/uolLogo.png'
 import adMooHLogo from './images/adMoohLogo.png'
 
-export default class UolNews extends React.Component {
+export default class UolNews extends AdmoohApp {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -12,6 +13,11 @@ export default class UolNews extends React.Component {
 			isVisible: false
 		}
 	}
+
+	willShow(){
+		this.forceUpdate();
+	}
+
 	render() {
 		const daysOfWeek = [
 			"Domingo",
@@ -29,11 +35,11 @@ export default class UolNews extends React.Component {
 		const month = this.state.date.getMonth() + 1;
 		const news = this._getNewsWithThumbnail();
 
-
-
 		const type = news.title;
 		const description = news.description;
 		const picture = news.linkfoto;
+
+		const customName = this.props.custom.Name;
 
 		return (
 			<div style={{ ...layout.template_uol_view }}>
@@ -51,6 +57,7 @@ export default class UolNews extends React.Component {
 							</h2>
 							<h3 style={layout.title}>
 								{description}
+								{customName}
 							</h3>
 						</div>
 						<div style={layout.date}>
@@ -68,6 +75,7 @@ export default class UolNews extends React.Component {
 			</div>
 		)
 	}
+
 	_getNewsWithThumbnail() {
 		const items = this.props.data.filter(i => i.linkfoto !== "");
 		return items[this._getRandomIndex(items.length)];

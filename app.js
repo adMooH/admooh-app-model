@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LoadTemplate from './src/loadTemplate';
+import AppView from './src/preview/views/appView';
 const { getadMooHTemplate } = require(process.env.ADMOOH_TEMPLATE);
-ReactDOM.render(<LoadTemplate getTemplate={getadMooHTemplate} />, document.getElementById("app"));
+ReactDOM.render(<AppView getTemplate={getadMooHTemplate}/>, document.getElementById("app"));

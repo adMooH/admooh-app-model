@@ -1,8 +1,8 @@
-# adMooH Signage Template
 
 [![N|Solid](http://v.fastcdn.co/u/19d828a0/31820341-0-Logo-adMooH-Vertical.png)](https://home.admooh.com/)
+# adMooH Signage App
 
-adMooH Signage template é uma ferramenta para a construções de templates que serão usados nos canais de conteúdo dentro da plataforma adMooH.
+adMooH Signage App é uma ferramenta para a construções de templates que serão usados nos canais de conteúdo dentro da plataforma adMooH.
 Os templates são construídos em javascript utilizando [React.js](https://reactjs.org/), com essa ferramenta você pode
 
   - Visualizar items do feed RSS.
@@ -70,12 +70,26 @@ const customStyle = {
 export default class SampleTemplate extends React.Component {
 	render() {		
         return(
-			<div>
-			    <h1 style={customStyle}>Style1</h1>
-			     <h1 style={layout.customCss}>Style1</h1>
-			</div>
+    <div>
+        <h1 style={customStyle}>Style1</h1>
+        <h1 style={layout.customCss}>Style1</h1>
+     </div>
 		);
     }
+}
+```
+
+### Utilizando Dados
+
+O Seu aplcativo irá receber 5  propriedades
+
+```json
+{
+    "data": [/*custom source data*/],
+    "custom": {/*any custom data*/},
+    "willMount": function() => void,
+    "willStart": function() => void,
+    "willStop": function() => void
 }
 ```
 

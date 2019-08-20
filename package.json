@@ -1,5 +1,5 @@
 {
-  "name": "signage-template-webpack",
+  "name": "admooh-app-model",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -12,10 +12,13 @@
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "base64-inline-loader": "^1.1.1",
+    "clsx": "^1.0.4",
     "node-fetch": "^2.6.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-json-editor-ajrm": "^2.5.9",
     "react-json-view": "^1.19.1",
+    "react-swipeable-views": "^0.13.3",
     "x2js": "^3.3.1"
   },
   "babel": {
