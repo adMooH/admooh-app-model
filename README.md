@@ -4,7 +4,7 @@
 # adMooH Signage App
 
 adMooH Signage App é uma ferramenta para a construções de aplicativos que serão usados dentro da plataforma adMooH.
-Os templates são construídos em javascript utilizando [React.js](https://reactjs.org/), com essa ferramenta você pode:
+Os templates são construídos em javascript utilizando **[React.js](https://reactjs.org/)**, com essa ferramenta você pode:
 
   - Visualizar o app.
   - Visualizar items do RSS e JSON.
@@ -73,14 +73,34 @@ E necessário fazer a importação dele no componente.
 import * as layout from './template.css';
 ```
 
+### **Utilizando Animações**
+
+Utilize o **[pose.js](https://popmotion.io/pose/learn/popmotion-get-started/)**
+
+```javascript
+import posed from 'react-pose';
+
+const FadeInBox = posed.div({
+	hidden: { opacity: 0 },
+	visible: { opacity: 1 }
+});
+...
+
+<FadeInBox pose={this.state.visible ? 'visible' : 'hidden'}>
+    /* seu componente */
+</FadeInBox>
+```
+
 ### **Utilizando Dados**
 
-O Seu aplicativo irá receber 2 propiedades.
+O Seu aplicativo irá receber 3 propiedades.
 
 | Prop | Tipo | Descrição |
 |:---|:---|:---|
 |`data`|object[]|Um array com os objetos do feed (rss convertido ou JSON).|
 |`custom`|object|Objeto com as informações customizadas do aplicativo.|
+|`context`|object|Objeto com informacustomizadas do aplicativo.|
+
 
 Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://github.com/x2js/x2js)**.
 
@@ -89,10 +109,23 @@ Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://gith
 Você pode usar como base o ciclo de vida do react.\
 http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-Além disso o adMooH Signage irá executar a função **willShow()** (caso implementada) quando ele for exibir o aplicativo. 
+O Aplicativo e carregado antes de ser exibido, utilize o construtor do componente para tratar as propiedades recebidas em **[Utilizando Dados](#Utilizando-Dados)**, o adMooH Signage irá executar a função **`willShow()`** <small>caso implementada</small> assim que ele for exibir o aplicativo, essa função pode ser usada para disparar animações de entrada por exemplo.
+Quando o aplicativo for descarregado a função **`componentWillUnmount()`** será chamada.
+
+
 
 ```javascript
+
+constructor(props) {
+    super(props)
+    /*sua logica*/
+}
+
 willShow(){
+    /*sua logica*/
+}
+
+componentWillUnmount() {
     /*sua logica*/
 }
 ```
@@ -114,6 +147,6 @@ $ yarn build -t ./template/awesome-app/index.js -n {app name opcicional}
 O arquivo final do template estará disponivel na pasta .build na raiz do projeto.
 
 ## **Exemplos**
-Mais exemplos [aqui!](https://github.com/adMooH/signage-template)
+Mais exemplos **[aqui!](https://github.com/adMooH/signage-template)**
 
 ## **May the force be with you!**

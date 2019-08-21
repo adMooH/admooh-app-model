@@ -9,7 +9,7 @@ import posed from 'react-pose';
 const Box = posed.div({
 	hidden: { opacity: 0 },
 	visible: { opacity: 1 }
-  });
+});
 
 export default class UolNews extends AdmoohApp {
 	
