@@ -15,6 +15,7 @@ import {DataOptions, CustomOptions, ActionOptions} from '../components/options';
 import Fab from '@material-ui/core/Fab';
 import ResolveRSS from '../services/rssService';
 import Alert from '../components/alert';
+import AdmoohContext from '../admoohContext';
 
 const drawerWidth = 440;
 const useStyles = makeStyles(theme => ({
@@ -120,15 +121,14 @@ export default function AppView(props) {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-      >
-        
-          <AppPreview
-            getApp={props.getApp}
-            data={data}
-            custom={customData}
-            setApp={setAppRef}
-            />
-     
+      >        
+        <AppPreview
+          getApp={props.getApp}
+          data={data}
+          custom={customData}
+          setApp={setAppRef}
+          context={new AdmoohContext()}
+        />     
       </main>
       <Drawer
         className={classes.drawer}
