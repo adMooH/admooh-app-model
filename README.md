@@ -99,7 +99,7 @@ O Seu aplicativo irá receber 3 propiedades.
 |:---|:---|:---|
 |`data`|object[]|Um array com os objetos do feed (rss convertido ou JSON).|
 |`custom`|object|Objeto com as informações customizadas do aplicativo.|
-|`context`|object|Objeto com informacustomizadas do aplicativo.|
+|`context`|object|Objeto com informações e funções do dispositivo.|
 
 
 Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://github.com/x2js/x2js)**.
