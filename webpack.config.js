@@ -8,6 +8,9 @@ module.exports = (env, argv) => {
 		mode: mode || 'development'
 	}
 	const template = argv.t;
+	const templateName = argv.n;
+	const today  = new Date();
+
 	if (template === undefined || template === null || template === "") {
 		console.error("ERROR:No template was specified.");
 		process.exit(1);
@@ -20,9 +23,8 @@ module.exports = (env, argv) => {
 		config.out = 'template.debug.js';
 	} else {
 		// User is exporting a template
-		const templateName = template.split('/')[2];
 		config.entry = template;
-		config.out = `template.${templateName}.js`;
+		config.out = templateName !== undefined ? `template-${templateName}.js` : `template-${today.getMilliseconds()}.js`;
 	}
 
 	const appEnvs = {

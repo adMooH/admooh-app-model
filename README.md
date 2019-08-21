@@ -102,13 +102,13 @@ willShow(){
 Para iniciar a visualização de um aplicativo execute o comando **start** e passe no argumento **-t** o caminho do arquivo **index.js** do seu app.
 
 ```sh
-$ yarn start -t ./template/awesome-app/index.js
+$ yarn start -t ./template/awesome-app/index.js 
 ```
 
 Para buildar o aplicativo execute o comando **build**.
 
 ```sh
-$ yarn build -t ./template/awesome-app/index.js
+$ yarn build -t ./template/awesome-app/index.js -n {app name opcicional}
 ```
 
 O arquivo final do template estará disponivel na pasta .build na raiz do projeto.
