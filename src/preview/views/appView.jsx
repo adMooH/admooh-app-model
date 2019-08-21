@@ -21,17 +21,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: drawerWidth,
-  },
-  title: {
-    flexGrow: 1,
-  },
   hide: {
     display: 'none',
   },
@@ -44,6 +33,8 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -130,12 +121,14 @@ export default function AppView(props) {
           [classes.contentShift]: open,
         })}
       >
-        <AppPreview
-          getApp={props.getApp}
-          data={data}
-          custom={customData}
-          setApp={setAppRef}
-          />
+        
+          <AppPreview
+            getApp={props.getApp}
+            data={data}
+            custom={customData}
+            setApp={setAppRef}
+            />
+     
       </main>
       <Drawer
         className={classes.drawer}
