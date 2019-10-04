@@ -20,20 +20,24 @@ Os templates são construídos em javascript utilizando **[React.js](https://rea
 ├──./images
 │   └── *.png, *jpeg
 ├── *.css
-├── app.jsx
-└── index.js
+├── app.js
+├── index.js
+└── prepare.js
 ```
-O arquivo **index.js** não deve ser alterado!\
-O arquivo **app.jsx** pode ser alterado mas é necessário que o componente principal do aplicativo seja a exportação padrão do arquivo.
 
-```javascript
-export default class UolNews extends React.Component {
-...
-```
+Utilização dos arquivos:
+|Arquivo|Descrição|
+|--|--|
+|**prepare.js**| Aqui você irá definir a função que será executada antes que o adMooH Signage rode o **app**, normalmente utilizada para pré-configurar o ambiente como download de arquivos ou de informações... [leia mais](#Ciclo-de-vida).|
+|**app.js** ¹| Aqui você irá definir os elementos que serão exibidos pelo adMooH Signage e também regras do seu aplicativo.
+|**index.js** ²| Arquivo que realiza as importações de **app** e **prepare** e realiza as ações necessárias para que o aplicativo seja executado no adMooH Signage.|
+
+¹ E recomendado que o componente principal da aplicação seja exportado como default.\
+² E obrigatório que a função **buildApp** seja executada.
 
 ### **Utilizando Estilos**
 
-Os estilos nos componentes do aplicativo serão convertidos para style in-line, existem duas formas de adicionar aplicá-los:
+Os estilos nos componentes do aplicativo serão convertidos para style in-line, existem duas formas de aplicá-los:
 
 - Utlizando um objeto de estilo.
 
@@ -69,31 +73,34 @@ export default class SampleTemplate extends React.Component {
 ```
 E necessário fazer a importação dele no componente.
 
-```javascript
+```js
 import * as layout from './template.css';
 ```
 
-### **Utilizando Animações**
+### **Animações**
 
 Utilize o **[pose.js](https://popmotion.io/pose/learn/popmotion-get-started/)**
 
-```javascript
+```js
 import posed from 'react-pose';
 
 const FadeInBox = posed.div({
 	hidden: { opacity: 0 },
 	visible: { opacity: 1 }
 });
-...
-
+/*
+.
+.
+.
+*/
 <FadeInBox pose={this.state.visible ? 'visible' : 'hidden'}>
     /* seu componente */
 </FadeInBox>
 ```
 
-### **Utilizando Dados**
+### **Dados**
 
-O Seu aplicativo irá receber 3 propiedades.
+O Seu aplicativo irá receber pelas propiedades 3 objetos.
 
 | Prop | Tipo | Descrição |
 |:---|:---|:---|
@@ -101,21 +108,39 @@ O Seu aplicativo irá receber 3 propiedades.
 |`custom`|object|Objeto com as informações customizadas do aplicativo.|
 |`context`|object|Objeto com informações e funções do dispositivo.|
 
+Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://github.com/x2js/x2js)**.\
+Para desenvolvimento, você pode setar a propiedade **defaultData** no ./index.js
 
-Em caso de feed RSS os items serão convertidos utilizando **[x2js](https://github.com/x2js/x2js)**.
+```js
+const props = {
+  getApp: window.admoohApp.get,
+  prepareApp: window.admoohApp.prepare,
+  defaultData: //Seus dados
+};
+```
 
 ### **Ciclo de vida**
+
+#### Pré-Execução
+
+Antes do aplicativo ser executado a função exportada no arquivo **prepare.js** será executada, essa função irá receber como paramêtro 1 objeto com 2 propiedades:
+
+| Prop | Tipo | Descrição |
+|:---|:---|:---|
+|`context`|object|Objeto com informações e funções do dispositivo.|
+|`data`|object|Objeto com informações do aplicativo.|
+
+Veja [**adMooH App**](https://github.com/adMooH/admooh-app#readme) para saber mais sobre as informações e funções expostas pelo context.
+
+#### Execução
 
 Você pode usar como base o ciclo de vida do react.\
 http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
-O Aplicativo e carregado antes de ser exibido, utilize o construtor do componente para tratar as propiedades recebidas em **[Utilizando Dados](#Utilizando-Dados)**, o adMooH Signage irá executar a função **`willShow()`** <small>caso implementada</small> assim que ele for exibir o aplicativo, essa função pode ser usada para disparar animações de entrada por exemplo.
+O Aplicativo e carregado antes de ser exibido, utilize o construtor do componente para tratar as propiedades recebidas em **[Utilizando Dados](#Dados)**, o adMooH Signage irá executar a função **`willShow()`** <small>caso implementada</small> assim que ele for exibir o aplicativo, essa função pode ser usada para disparar animações de entrada por exemplo.
 Quando o aplicativo for descarregado a função **`componentWillUnmount()`** será chamada.
 
-
-
 ```javascript
-
 constructor(props) {
     super(props)
     /*sua logica*/
@@ -144,9 +169,7 @@ Para buildar o aplicativo execute o comando **build**.
 $ yarn build -t ./template/awesome-app/index.js -n {app name opcicional}
 ```
 
-O arquivo final do template estará disponivel na pasta .build na raiz do projeto.
+O arquivo final do template estará disponivel na pasta **build** na raiz do projeto.
 
 ## **Exemplos**
 Mais exemplos **[aqui!](https://github.com/adMooH/signage-template)**
-
-## **May the force be with you!**

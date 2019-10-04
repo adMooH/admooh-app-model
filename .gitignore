@@ -4,3 +4,4 @@ build/
 ./build
 *-lock.json
 .error
+__snapshots__
