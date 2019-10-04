@@ -2,15 +2,9 @@ import React from 'react';
 import * as layout from './app.css';
 import { AppComponent } from '@admooh-app/core';
 
-import {daysOfWeek, getLinkCode} from './utils';
+import {feedColors, getLinkCode} from './utils';
 import uolLogo from './images/uolLogo.png';
 import adMooHLogo from './images/adMoohLogo.png';
-import posed from 'react-pose';
-
-const Box = posed.div({
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-});
 
 export default class UolNews extends AppComponent {
   constructor(props) {
@@ -30,10 +24,10 @@ export default class UolNews extends AppComponent {
     });
 
     this.state = {
-      dateNow: new Date(),
       feedType,
       news: undefined,
-      rollUp: false
+      rollUp: false,
+      color: feedColors[feedType]
     };
   }
 
@@ -42,52 +36,41 @@ export default class UolNews extends AppComponent {
 	}
 
   render() {
-    const { news, dateNow } = this.state;
+
+    const { news, color } = this.state;
 
     if (news === undefined) {
       return <>{this.state.feedType}</>;
     } else {
-
-
-      const hour = dateNow.getHours();
-      const minute = dateNow.getMinutes();
-      const day = daysOfWeek[dateNow.getDay()];
-      const date = dateNow.getDate();
-      const month = dateNow.getMonth() + 1;
 
       const type = news.title;
       const description = news.description;
       const picture = news.linkfoto;
 
       return (
-        <div style={{ ...layout.template_uol_view }}>
-          <div style={{ ...layout.content, backgroundImage: `url(${picture})` }}>
-            <header style={layout.logos}>
-              <div>
-                <img style={{ ...layout.logos__uol }} src={uolLogo} />
-                <Box pose={this.state.rollUp ? 'visible' : 'hidden'}>
-                  <img style={{ ...layout.logos__admooh }} src={adMooHLogo} />
-                </Box>
-              </div>
-            </header>
-            <footer style={{ ...layout.news }}>
-              <div key="bola" style={layout.news__news_content}>
-                <h2 style={layout.type}>{type}</h2>
-                <h3 style={layout.title}>{description}</h3>
-              </div>
-              <div style={layout.date}>
-                <div>
-                  <h2 style={layout.date_h2}>
-                    {('0' + hour).slice(-2)}h{('0' + minute).slice(-2)}
-                  </h2>
-                  <h3 style={layout.date_h3}>
-                    {day}, {('0' + date).slice(-2)}/{('0' + month).slice(-2)}
-                  </h3>
+          <div style={{ ...layout.template_uol_view }}>
+             <div style={{ ...layout.content, backgroundImage: `url(${picture})` }}>
+              <header style={layout.header_bar}>
+                <div style={layout.header_bar__logo_uol}>
+                  <img style={layout.header_bar__logo_uol___img} src={uolLogo} />
                 </div>
+                <div style={{ ...layout.header_bar__title, backgroundColor: "rgba("+color + ", 0.8)"}}>
+                    <div style={layout.header_bar__title__text}>
+                      {type}
+                    </div>
+                </div>
+              </header>
+              <div style={{...layout.new, backgroundImage: "linear-gradient(to top, rgba("+ color +", 0.5) 20%, rgba(255, 0, 0, 0) 70%)"}}>
+                <div style={{...layout.new__bar,  backgroundColor: "rgb("+color+")"}}></div>
+                <div style={layout.new__text}>{description}</div>
               </div>
-            </footer>
+              <footer>
+                <div style={layout.footer_admooh}>
+                  <img style={layout.footer_admooh___img} src={adMooHLogo} />
+                </div>
+              </footer>
+             </div>
           </div>
-        </div>
       );
     }
   }

@@ -11,3 +11,11 @@ export const feedUrls = {
   3: 'https://www3.uol.com.br/xml/midiaindoor/destaques.xml',
   4: 'https://www3.uol.com.br/xml/midiaindoor/internacional.xml',
 };
+
+export const feedColors = {
+  0: '235, 70, 52',
+  1: '235, 226, 52',
+  2: '70, 235, 52',
+  3: '52, 235, 226',
+  4: '235, 52, 235',
+};
