@@ -2,11 +2,15 @@
 # yarn lockfile v1
 
 
-"@admooh-app/core@^1.0.0", "@admooh-app/core@file:../admooh-app/packages/admooh-app/build":
+"@admooh-app/core@^1.0.0", "@admooh-app/core@^1.0.1":
   version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@admooh-app/core/-/core-1.0.1.tgz#7e121caed99641f7f2c7cf0e77faf7c9cce6fbf9"
+  integrity sha512-/Y7ISwyRAdrj4I49FRNi96s/kxRcvf2LoDZ4+6aOWXwDF4lRy1JRg4PDViMds7xkg7riqxBnUOvj/sUD2bBI+A==
 
-"@admooh-app/dev-tools@file:../admooh-app/packages/admooh-app-dev-tools/build":
+"@admooh-app/dev-tools@^1.0.1":
   version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@admooh-app/dev-tools/-/dev-tools-1.0.1.tgz#68e371a06911262783460d5a79cae609c1f8c2d0"
+  integrity sha512-/U0lTRPJEVTY3Otq9BFKfnxoZVqNmbtY+TZEhW6U0ekAOYNMXu/uvBqMTzAuIE/n9Inv0/5GRYxU8ycyqfz+/w==
   dependencies:
     "@admooh-app/core" "^1.0.0"
     "@admooh-app/tools" "^1.0.0"

@@ -17,25 +17,25 @@
 .header-bar {
     width: 100%;
     height: 10%;
-    top: 1em;
+    top: 5vh;
     right: 0;
     position: absolute;
 }
 .header-bar .logo-uol {
-    height: 8em;
-    width: 30em;
+    height: 100%;
+    width: 30vh;
     float: left;
     background: #000;
     position: absolute;
 }
 
 .header-bar .logo-uol > img {
-  width: 18em;
-  margin: 1% 0% 1% 5em
+  width: 22vh;
+  margin: 3% 0% 1% 15%
 }
 
 .header-bar .title {
-  height: 8em;
+  height: 100%;
   width: 100%;
   float: right;
   text-align: right;
@@ -45,7 +45,7 @@
 }
 
 .header-bar .title .text {
-  font-size: 5em;
+  font-size: 6vh;
   margin: 0.2em 0.5em 0em 0.2em
 }
 
@@ -56,8 +56,8 @@
 }
 
 .footer-admooh > img {
-  width: 10em;
-  height: 10em;
+  width: 10vh;
+  height: 10vh;
 }
 
 .new {
@@ -74,14 +74,24 @@
 }
 
 .new .bar {
-  height: 1.5em;
-  width: 70%;
-  margin-top: 10em;
-  margin-left: 2.5em;
+  height: 3.5vh;
+  margin-top: 15vh;
+  margin-left: 4vh;
   position: absolute;
 }
 
 .new .text {
-  font-size: 5em;
+  font-size: 7vh;
   margin: 3em 0.5em 0em 0.5em;
+}
+
+
+.splash {
+  background-color: black;
+}
+
+
+.splash > img {
+  display:block;
+  margin:auto;
 }
