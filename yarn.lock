@@ -2,15 +2,20 @@
 # yarn lockfile v1
 
 
-"@admooh-app/core@^1.0.0", "@admooh-app/core@^1.0.1":
+"@admooh-app/core@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@admooh-app/core/-/core-1.0.1.tgz#7e121caed99641f7f2c7cf0e77faf7c9cce6fbf9"
   integrity sha512-/Y7ISwyRAdrj4I49FRNi96s/kxRcvf2LoDZ4+6aOWXwDF4lRy1JRg4PDViMds7xkg7riqxBnUOvj/sUD2bBI+A==
 
-"@admooh-app/dev-tools@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@admooh-app/dev-tools/-/dev-tools-1.0.1.tgz#68e371a06911262783460d5a79cae609c1f8c2d0"
-  integrity sha512-/U0lTRPJEVTY3Otq9BFKfnxoZVqNmbtY+TZEhW6U0ekAOYNMXu/uvBqMTzAuIE/n9Inv0/5GRYxU8ycyqfz+/w==
+"@admooh-app/core@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@admooh-app/core/-/core-1.0.3.tgz#7c64e483c578812795e58954bf7697bc9ec0f155"
+  integrity sha512-17ewjs5vQR7sMH/P5cQy0LmHvW00OsjKKGU18KnHd2InDehwC5DBehtYpiEr4wpoJ3qtCXlTAKpPtAcFz3v5oQ==
+
+"@admooh-app/dev-tools@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@admooh-app/dev-tools/-/dev-tools-1.0.2.tgz#c2954545b385f87123c8d32c054654974dac1153"
+  integrity sha512-RjD5/+9zUx24/1Bx3F7S+EuXLuXdCSC0l2LFAf2l56mRuxGWDUWt4mNcX8RUXvimHJYGsOXHYwBw84XiQ2hFTg==
   dependencies:
     "@admooh-app/core" "^1.0.0"
     "@admooh-app/tools" "^1.0.0"
@@ -28,6 +33,14 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@admooh-app/tools/-/tools-1.0.0.tgz#7d7cf67828110c2cdfcdf0a6f1796bf2ecd622d8"
   integrity sha512-D1VHvwxhThlHxTcxvu4JWVfeQbP5ffWUILeTKdFaJI8e/OYaLMfyGj0eOwgh8Q9DjMCxqopZo1JVsk11W8wTNw==
+  dependencies:
+    node-fetch "^2.6.0"
+    x2js "^3.3.1"
+
+"@admooh-app/tools@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@admooh-app/tools/-/tools-1.0.1.tgz#9fb5ad1815cd8bfa03364f736addcf14745d37b1"
+  integrity sha512-pB+n4S5p2eSWJraUxvHIFbG600cVQMfO/YnSDeEtDz1w1hF7i+m5XhsUNoJ+OVVLZi6dUGaN1hqcaxqAkU8I/g==
   dependencies:
     node-fetch "^2.6.0"
     x2js "^3.3.1"

@@ -47,7 +47,7 @@ export default class UolNews extends AppComponent {
       feedType,
       news: undefined,
       color: feedColors[feedType],
-      showSplash: false,
+      showSplash: true,
       barWidth: 10
     };
   }

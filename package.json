@@ -5,6 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.NODE_ENV=development --port 8085",
     "build": "webpack --env.NODE_ENV=production -p --progress --colors",
+    "build:uolnews": "yarn build -t ./apps/uol-news/index.js -n uolnews",
     "prettier": "yarn node ./scripts/prettier.js",
     "prettier:all": "yarn node ./scripts/prettier.js write",
     "lint": "eslint . --cache --report-unused-disable-directives",
@@ -14,9 +15,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@admooh-app/core": "^1.0.2",
-    "@admooh-app/dev-tools": "^1.0.1",
-    "@admooh-app/tools": "^1.0.0",
+    "@admooh-app/core": "^1.0.3",
+    "@admooh-app/dev-tools": "^1.0.2",
+    "@admooh-app/tools": "^1.0.1",
     "react-pose": "^4.0.8",
     "react-pose-text": "^3.1.0"
   },

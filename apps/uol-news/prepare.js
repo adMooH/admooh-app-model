@@ -15,7 +15,7 @@ export default function Prepare(props) {
       const feedUrl = feedUrls[feedType];
 
       const rssSource = new AppRssSource(feedUrl);
-      const items = await rssSource.getItems(false);
+      const items = await rssSource.getItems(true);
 
       if (items === undefined || items === null || items.length === 0) resolve(false);
 
